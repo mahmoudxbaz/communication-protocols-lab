@@ -67,16 +67,13 @@ int main(void) {
 
         /* Send frame to Slave over SPI */
         SPI_SelectSlave();
-        _delay_us(20);
 
         SPI_Transfer(0xAA); /* Sync header */
-        _delay_us(50);
 
         for (uint8_t i = 0; i < 7; i++) {
             SPI_Transfer(rtc_data[i]);
         }
 
-        _delay_us(20);
         SPI_DeselectSlave();
 
         _delay_ms(1000);
